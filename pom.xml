@@ -3,11 +3,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.vmware</groupId>
-  <artifactId>moivebase</artifactId>
+  <artifactId>moviebase</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>moivebase</name>
+  <name>moviebase</name>
   <url>http://maven.apache.org</url>
 
   <properties>
