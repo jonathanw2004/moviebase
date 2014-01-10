@@ -35,7 +35,7 @@ public class MovieServiceTest {
 	}
 	
 	@Test
-	public void removeAMovieAndGetTotal() {
+	public void removeAMovieAndGetTotal() throws MovieException {
 		movieService.addMovie(new Movie("Wall-E"));
 		movieService.addMovie(new Movie("E.T. - The Extra Terrestrial"));
 		movieService.removByName("Wall-E");
@@ -43,7 +43,15 @@ public class MovieServiceTest {
 	}
 	
 	@Test
-	public void removeAMovieFromAnEmptyService() {}
+	public void removeAMovieFromAnEmptyService() {
+		try {
+			movieService.removByName("Wall-E");
+			fail("Was expecting an exception in removeAMovieFromAnEmptyService().");
+		} catch (MovieException e) {
+			assertEquals(e.getMessage(), "There are no movies in the service");
+			
+		}
+	}
 	
 	@Test
 	public void removeAMovieThatDosentExist() {}

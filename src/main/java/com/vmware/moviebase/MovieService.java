@@ -17,8 +17,12 @@ public class MovieService {
 		return count;
 	}
 
-	public void removByName(String title) {
+	public void removByName(String title) throws MovieException {
 		// TODO Auto-generated method stub
+		if (count == 0) {
+			throw new MovieException("There are no movies in the service");
+		}
+		
 		count--;
 	}
 
