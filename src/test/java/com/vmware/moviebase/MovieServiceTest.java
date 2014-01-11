@@ -15,7 +15,7 @@ public class MovieServiceTest {
 	}
 	
 	@Test
-	public void addTwoMoviesAndGetTheTotal() {
+	public void addTwoMoviesAndGetTheTotal() throws MovieException {
 		// Subject under test		
 		movieService.addMovie(new Movie("E.T. - The Extra Terrestrial"));
 		movieService.addMovie(new Movie("Wall-E"));
@@ -53,7 +53,7 @@ public class MovieServiceTest {
 	}
 	
 	@Test
-	public void removeAMovieThatDoesntExist() {
+	public void removeAMovieThatDoesntExist() throws MovieException {
 		movieService.addMovie(new Movie("Wall-E"));
 		movieService.addMovie(new Movie("E.T. - The Extra Terrestrial"));
 		try {
@@ -62,7 +62,13 @@ public class MovieServiceTest {
 		} catch (MovieException e) {
 			assertEquals(e.getMessage(), "That movie does not exist in the service");
 		}
-		
+	}
+	
+	@Test
+	public void solveBUG1234DupValuesAllowed() throws MovieException {
+		movieService.addMovie(new Movie("Wall-E"));
+		movieService.addMovie(new Movie("Wall-E"));
+		fail("Was expecting an exception in removeAMovieThatDosentExist().");
 	}
 	
 }
